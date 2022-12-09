@@ -1,4 +1,4 @@
-[![JetBrains incubator project](http://jb.gg/badges/incubator.svg)]
+![JetBrains incubator project](http://jb.gg/badges/incubator.svg)
 
 This is an experimental plugin exploring the integration of [SCIP](https://github.com/sourcegraph/scip)
 into JetBrains IDEs. Right now the plugin can consume SCIP files and provide navigation based on that;
