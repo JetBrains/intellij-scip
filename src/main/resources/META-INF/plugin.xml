@@ -1,0 +1,25 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.jetbrains.scip</id>
+    <name>Scip</name>
+    <description><![CDATA[Integrates with <a href="https://github.com/sourcegraph/scip">SCIP</a> offline indexes to support
+code navigation, reference search and other features for files not part of current project]]></description>
+    <vendor>JetBrains</vendor>
+    <resource-bundle>messages.ScipBundle</resource-bundle>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <projectService serviceImplementation="com.jetbrains.scip.consumer.ScipService"/>
+        <psi.implicitReferenceProvider implementation="com.jetbrains.scip.consumer.ScipImplicitReferenceProvider"/>
+        <psi.declarationProvider implementation="com.jetbrains.scip.consumer.ScipSymbolDeclarationProvider"/>
+        <searcher forClass="com.intellij.find.usages.api.UsageSearchParameters"
+                  implementationClass="com.jetbrains.scip.consumer.ScipReferenceSearcher"/>
+    </extensions>
+    <actions>
+        <action id="LoadScip" class="com.jetbrains.scip.consumer.LoadScipAction"/>
+        <action id="GenerateScip" class="com.jetbrains.scip.producer.GenerateScipAction"/>
+    </actions>
+</idea-plugin>
